@@ -10,20 +10,28 @@ import React from 'react';
 import {
   StyleSheet,
   View,
+  Text
 } from 'react-native';
 
-import Header from './components/header';
-import BodyAccueil from './components/bodyAccueil';
 
-export default class Acceuil extends React.Component {
+import api from '../config/api';
+
+export default class Post extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      posts:[],
+      isLoading : false
+    };
+  }
 
  
   render(){
     
     return (
       <View style={styles.container}>
-        <Header />
-        <BodyAccueil navigation={this.props.navigation} /> 
+        <Text>OK</Text>
         
       </View>
     );

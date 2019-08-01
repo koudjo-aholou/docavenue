@@ -12,28 +12,16 @@ import {
   View,
 } from 'react-native';
 
-import Acceuil from './src/screenAcceuil';
+import Navigation from './navigation/Navigation';
+
 
 export default class App extends React.Component {
 
   render(){
     
     return (
-      <View style={styles.container}>
-        <Acceuil />
-      </View>
+        <Navigation />
     );
   };
 };
 
-const styles = StyleSheet.create({
-
- container:{
-  backgroundColor: "#44a7b7",
-  flex:1,
-  width:'100%',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
- }
-
-});
