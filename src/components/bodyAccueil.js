@@ -5,7 +5,6 @@ import LottieView from 'lottie-react-native';
 
 export default class BodyAccueil extends React.Component {
 
-//this.props.navigation.navigate('#')
   render() {
     const {container, lottie, bouton, textBouton} = styles;
     
@@ -18,7 +17,7 @@ export default class BodyAccueil extends React.Component {
               <TouchableOpacity
                   style={bouton}
                   underlayColor='#fff'
-                  onPress={() => console.warn("ca marche") }
+                  onPress={() => this.props.navigation.navigate('Posts') }
                 >
                 <Text style={textBouton}>Découvrir les posts</Text>
               </TouchableOpacity>  
