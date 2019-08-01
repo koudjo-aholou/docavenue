@@ -12,15 +12,19 @@ import {
   View,
 } from 'react-native';
 
-import Acceuil from './src/screenAcceuil';
+import Header from './components/header';
+import BodyAccueil from './components/bodyAccueil';
 
-export default class App extends React.Component {
+export default class Acceuil extends React.Component {
 
+ 
   render(){
     
     return (
       <View style={styles.container}>
-        <Acceuil />
+        <Header />
+        <BodyAccueil /> 
+        
       </View>
     );
   };
