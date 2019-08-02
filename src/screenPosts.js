@@ -16,7 +16,13 @@ import {
 
 import api from '../config/api';
 
-export default class Post extends React.Component {
+export default class Posts extends React.Component {
+
+  static navigationOptions = {
+    headerStyle:{
+      backgroundColor:"#B79944"
+    }
+  }
 
   constructor(props){
     super(props);
