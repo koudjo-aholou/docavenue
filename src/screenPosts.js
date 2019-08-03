@@ -13,9 +13,12 @@ import {
   ScrollView,
   Text,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  Dimensions
 } from 'react-native';
 
+//Adapter largeur et hauteur en fonction de l'écran
+const { width, height } = Dimensions.get('window');
 import LottieView from 'lottie-react-native';
 import api from '../config/api';
 
@@ -50,7 +53,6 @@ export default class Posts extends React.Component {
   getData = () =>{
     this.setState({ isLoading: true });
     ctx = this;
-
     //Fetch vers post
    // fetch(`${api}?_limit=10&_page=${this.state.page}`)
     fetch(`${api}`)
@@ -115,14 +117,14 @@ export default class Posts extends React.Component {
     //console.warn(item)
     return(
       <View style={styles.post}>
-        <View style={styles.postElements}> 
+        <View style={[styles.postElements, styles.width85per]}> 
           <View style={styles.postIdUserId}>
-            <Text style={styles.postTextIdUser}>{item.userId}</Text>
-            <Text style={styles.postTextIdUser}>N°{item.id}</Text>
+            <Text style={[styles.postTextIdUser, styles.fontMontserrat]}>{item.userId}</Text>
+            <Text style={[styles.postTextIdUser, styles.fontMontserrat]}>N°{item.id}</Text>
           </View>
           <View style={styles.postTitleBody}>
-            <Text style={styles.textPostTitle}>{this.capitalizeFirstLetter(item.title)}</Text>
-            <Text style={styles.textPostBody}>{this.capitalizeFirstLetter(item.body)}</Text>
+            <Text style={[styles.textPostTitle, styles.fontMontserrat]}>{this.capitalizeFirstLetter(item.title)}</Text>
+            <Text style={[styles.textPostBody, styles.fontMontserrat]}>{this.capitalizeFirstLetter(item.body)}</Text>
           </View>
         </View>
       </View>
@@ -133,15 +135,18 @@ export default class Posts extends React.Component {
     if(this.state.page ==1 ){
       return (
         <View style={styles.rendHeader}>
-          <Text style={styles.textRendHea}>Bienvenue ! </Text>
+          <View style={styles.width85per}>
+            <Text style={[styles.textRendHea, styles.fontRoboto]}>Bienvenue ! </Text>
+          </View>
         </View>
       )
     }else{
       return (
         <View style={styles.rendHeader}>
-          <Text style={styles.textRendHea}>Wow!</Text>
-          <Text style={styles.textRendHea}>Vous avez lus l'équivalent de {this.state.page} pages ! </Text>
-
+          <View style={styles.width85per}>
+            <Text style={[styles.textRendHea, styles.fontRoboto]}>Wow!</Text>
+            <Text style={[styles.textRendHea, styles.fontRoboto]}>Vous avez lus l'équivalent de {this.state.page} pages ! </Text>
+          </View>
         </View>
       )
     }
@@ -171,9 +176,9 @@ export default class Posts extends React.Component {
     }
   }
 
- 
   render(){
     const { loading, background, container} = styles;
+    //console.warn("width of the device : ",width, "height of the device :", height);
 
     if(this.state.isLoaded === false){
       return( 
@@ -205,8 +210,17 @@ const styles = StyleSheet.create({
     width:'100%',
     flexDirection: 'column'
  },
+ width85per:{
+  width:'85%'
+ },
  background:{
   backgroundColor: "#EFF7FD"
+},
+fontMontserrat:{
+  fontFamily: 'Montserrat-Regular'
+},
+fontRoboto:{
+  fontFamily: 'Roboto-Regular'
 },
  loading:{
     flex:1,
@@ -222,8 +236,8 @@ const styles = StyleSheet.create({
   alignItems:'center'
  },
  textRendHea:{
-  fontSize:22,
-  textAlign:'center'
+  fontSize:20,
+  textAlign:'left'
  },
  rendFooter:{
   paddingVertical: 20
@@ -235,7 +249,6 @@ const styles = StyleSheet.create({
   marginBottom:20,
  },
  postElements:{
-  width:'85%', 
   backgroundColor:'#619CC5',
   shadowColor: "#000",
   shadowOffset: {
@@ -259,22 +272,26 @@ const styles = StyleSheet.create({
  postTextIdUser:{
   color:'#fff',
   fontSize:16, 
-  paddingLeft: 30, 
-  paddingRight:30, 
+  //paddingLeft & paddingRight de 30
+  paddingLeft:width *0.08333,
+  paddingRight:width *0.08333,
   paddingBottom: 10
  },
  textPostTitle:{
   color:'#fff', 
-  textAlign:'center', 
-  paddingLeft:30, 
-  paddingRight: 30, 
+  textAlign:'center',
+  //paddingLeft & paddingRight de 30
+  paddingLeft:width *0.08333, 
+  fontSize:15, 
+  paddingRight:width *0.08333, 
   paddingBottom:10
  },
  textPostBody:{
   color:'#fff', 
-  fontSize:13, 
-  textAlign:'left', 
-  paddingLeft:30, 
-  paddingRight: 30
+  fontSize:14, 
+  textAlign:'left',
+  //paddingLeft & paddingRight de 30 
+  paddingLeft:width *0.08333, 
+  paddingRight:width *0.08333
  }
 });
