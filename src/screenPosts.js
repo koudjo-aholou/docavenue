@@ -114,27 +114,37 @@ export default class Posts extends React.Component {
   renderPosts = ({item, index}) => {
     //console.warn(item)
     return(
-        <View style={styles.post}>
-          <View style={styles.postElements}> 
-            <View style={styles.postIdUserId}>
-              <Text style={styles.postTextIdUser}>{item.userId}</Text>
-              <Text style={styles.postTextIdUser}>N°{item.id} index : {index}</Text>
-            </View>
-            <View style={styles.postTitleBody}>
-              <Text style={styles.textPostTitle}>{this.capitalizeFirstLetter(item.title)}</Text>
-              <Text style={styles.textPostBody}>{this.capitalizeFirstLetter(item.body)}</Text>
-            </View>
+      <View style={styles.post}>
+        <View style={styles.postElements}> 
+          <View style={styles.postIdUserId}>
+            <Text style={styles.postTextIdUser}>{item.userId}</Text>
+            <Text style={styles.postTextIdUser}>N°{item.id}</Text>
+          </View>
+          <View style={styles.postTitleBody}>
+            <Text style={styles.textPostTitle}>{this.capitalizeFirstLetter(item.title)}</Text>
+            <Text style={styles.textPostBody}>{this.capitalizeFirstLetter(item.body)}</Text>
           </View>
         </View>
+      </View>
     ) 
   };
 
   renderHeader = () => {
-    return (
-      <View style={styles.rendHeader}>
-        <Text style={styles.textRendHea}>Bienvenue ! </Text>
-      </View>
-    )
+    if(this.state.page ==1 ){
+      return (
+        <View style={styles.rendHeader}>
+          <Text style={styles.textRendHea}>Bienvenue ! </Text>
+        </View>
+      )
+    }else{
+      return (
+        <View style={styles.rendHeader}>
+          <Text style={styles.textRendHea}>Wow!</Text>
+          <Text style={styles.textRendHea}>Vous avez lus l'équivalent de {this.state.page} pages ! </Text>
+
+        </View>
+      )
+    }
   };
 
   renderFooter = () => {
@@ -173,16 +183,16 @@ export default class Posts extends React.Component {
       )
     }else{
       return (
-            <FlatList
-              data={this.state.posts}
-              style={[container, background]}
-              ListHeaderComponent={this.renderHeader}
-              renderItem={this.renderPosts}
-              ListFooterComponent={this.renderFooter}
-              keyExtractor={(item, index) =>item.id.toString()}
-              onEndReached={this.handleLoadMore}
-              onEndReachedThreshold={0.01}
-              />
+        <FlatList
+          data={this.state.posts}
+          style={[container, background]}
+          ListHeaderComponent={this.renderHeader}
+          renderItem={this.renderPosts}
+          ListFooterComponent={this.renderFooter}
+          keyExtractor={(item, index) =>item.id.toString()}
+          onEndReached={this.handleLoadMore}
+          onEndReachedThreshold={0.01}
+          />
       )
     }
   };
@@ -212,7 +222,8 @@ const styles = StyleSheet.create({
   alignItems:'center'
  },
  textRendHea:{
-  fontSize:22
+  fontSize:22,
+  textAlign:'center'
  },
  rendFooter:{
   paddingVertical: 20
