@@ -32,6 +32,7 @@ export default class Posts extends React.Component {
     this.state={
       posts:[],
       page:1,
+      postMax:50,
       isLoading : false,
       isLoaded:false
     };
@@ -58,8 +59,8 @@ export default class Posts extends React.Component {
     
       }).then((data) =>{
         const posts = [];
-         //Recupérer les 50 premiers posts
-         for(let i = 0; i < 50; i++){
+         //Recupérer les 50 premiers posts cf nombre dans this.state.postMax
+         for(let i = 0; i < this.state.postMax; i++){
            posts.push(data[i]);
          };
         //console.warn(posts);
@@ -71,73 +72,33 @@ export default class Posts extends React.Component {
            return 0;
          })
 
-         
+         //Afficher en partant de 0 en page 1
+         let debut = (10-1) * (this.state.page -1);
+        // console.warn(debut)
+
          //Afficher de 10 en 10
          let fin = (10-1) * this.state.page;
         // console.warn(fin)
 
-         let debut = (10-1) * (this.state.page -1);
-        // console.warn(debut)
-
          if(this.state.page ===1){
-            let page = posts.slice(0, 9);
-            console.warn(page.length)
+            let page = posts.slice(debut, fin);
+            //console.warn("page1",page.length)
             ctx.setState({
-          posts : this.state.posts.concat(page),
-          isLoading: false,
-          isLoaded: true
-        });
+              posts : this.state.posts.concat(page),
+              isLoading: false,
+              isLoaded: true
+            });
           }
-          //Optimisation poss ?
-        ///else{
-        //   let page = posts.slice(debut, fin)
-        //    ctx.setState({
-        //      posts : this.state.posts.concat(page),
-        //      isLoading: false,
-        //      isLoaded: true
-        // });
-        //  }
-         else if(this.state.page === 2){
-            let page = posts.slice(9, 18);
-            ctx.setState({
-          posts : this.state.posts.concat(page),
-          isLoading: false,
-          isLoaded: true
-        });
-         }
-         else if(this.state.page === 3){
-            let page = posts.slice(18, 27);
-             ctx.setState({
-          posts : this.state.posts.concat(page),
-          isLoading: false,
-          isLoaded: true
-        });
-         }
-
-         else if(this.state.page === 4){
-            let page = posts.slice(27, 36);
-             ctx.setState({
-          posts : this.state.posts.concat(page),
-          isLoading: false,
-          isLoaded: true
-        });
-         }
-          else if(this.state.page === 5){
-            let page = posts.slice(36, 45);
-             ctx.setState({
-          posts : this.state.posts.concat(page),
-          isLoading: false,
-          isLoaded: true
-        });
-         }
-          else if(this.state.page === 6){
-            let page = posts.slice(45, 54);
-             ctx.setState({
-          posts : this.state.posts.concat(page),
-          isLoading: false,
-          isLoaded: true
-        });
-         }
+          //Continuer pour les n autres pages
+        else{
+          let page = posts.slice(debut, fin)
+         // console.warn("page",this.state.page,"nb posts:",this.state.posts.concat(page).length)
+          ctx.setState({
+             posts : this.state.posts.concat(page),
+             isLoading: false,
+             isLoaded: true
+          });
+         }      
       }).catch((error) => {
         console.error(error);
       });
@@ -186,9 +147,9 @@ export default class Posts extends React.Component {
     );
   };
 
-  //Afficher le reste des posts initialement 10
+  //Afficher le reste des posts initialement max 50
   handleLoadMore = () => {
-    if(this.state.posts.length < 50){
+    if(this.state.posts.length < this.state.postMax){
        this.setState(
       {
       page: this.state.page +1
