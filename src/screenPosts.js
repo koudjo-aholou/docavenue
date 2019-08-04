@@ -52,7 +52,7 @@ export default class Posts extends React.Component {
   //appel BDD
   getData = () =>{
     this.setState({ isLoading: true });
-    ctx = this;
+
     //Fetch vers post
    // fetch(`${api}?_limit=10&_page=${this.state.page}`)
     fetch(`${api}`)
@@ -85,7 +85,7 @@ export default class Posts extends React.Component {
          if(this.state.page ===1){
             let page = posts.slice(debut, fin);
             //console.warn("page1",page.length)
-            ctx.setState({
+            this.setState({
               posts : this.state.posts.concat(page),
               isLoading: false,
               isLoaded: true
@@ -95,7 +95,7 @@ export default class Posts extends React.Component {
         else{
           let page = posts.slice(debut, fin)
          // console.warn("page",this.state.page,"nb posts:",this.state.posts.concat(page).length)
-          ctx.setState({
+          this.setState({
              posts : this.state.posts.concat(page),
              isLoading: false,
              isLoaded: true
@@ -113,7 +113,7 @@ export default class Posts extends React.Component {
   }
 
   //Afficher les posts 
-  renderPosts = ({item, index}) => {
+  renderPosts = ({item}) => {
     //console.warn(item)
     return(
       <View style={styles.post}>

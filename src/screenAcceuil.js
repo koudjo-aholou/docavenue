@@ -36,8 +36,7 @@ const styles = StyleSheet.create({
   backgroundColor: "#44a7b7",
   flex:1,
   width:'100%',
-  flexDirection: 'column',
-  justifyContent: 'space-around',
+  flexDirection: 'column'
  }
 
 });
