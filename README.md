@@ -24,7 +24,7 @@ cmd : react-native run-android
 ./App.js
 
 #Components and screens
-screenAccueil et  screensPost : ./src/screens
+screenAccueil et  screensPosts : ./src/screens
 Components ./src/components
 
 #Navigation

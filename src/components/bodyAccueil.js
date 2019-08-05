@@ -28,7 +28,7 @@ export default function BodyAccueil(props) {
               source={require('../assets/lottie-accueil-news.json')} 
               style={lottieView} 
               autoPlay loop
-              resizeMode="contain" 
+              resizeMode="cover" 
             />
           </View>
           <View style={contBouton}>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   lottieView:{
     //width 160 ; height 160
     width:width * 0.4444, 
-    height:0.2343,
+    height: height* 0.2343,
     //backgroundColor:'brown'
   },
   contBouton:{
