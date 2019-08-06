@@ -12,7 +12,7 @@ import {
   View,
 } from 'react-native';
 
-import Navigation from './navigation/Navigation';
+import Navigation from './src/navigation/navigation';
 
 
 export default class App extends React.Component {

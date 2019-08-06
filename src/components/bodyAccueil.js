@@ -77,8 +77,9 @@ const styles = StyleSheet.create({
     height:'42%'
   },
   lottieView:{
-    width:160, 
-    height:150,
+    //width 160 ; height 160
+    width:width * 0.4444, 
+    height: height* 0.2343,
     //backgroundColor:'brown'
   },
   contBouton:{
@@ -94,8 +95,8 @@ const styles = StyleSheet.create({
     borderRadius:30,
     width:"100%",
     borderWidth: 1,
-    borderColor: '#B79944',
-    backgroundColor:'#B79944'
+    borderColor: '#11424D',
+    backgroundColor:'#11424D'
   },
   textBouton:{
     textAlign:'center',
