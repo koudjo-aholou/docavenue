@@ -39,13 +39,13 @@ Fonts : ./src/assets/fonts
 #Debug APK or Install APK <br />
 ./apk
 
-#Compile
+# Compile
 Android Studio : https://developer.android.com/studio/
 
 #Build for production
 Open with Android Studio ./android/ then Buid > Build Bundle/APK
 
-#Potentials Errors : <br />
+# Solved Errors : <br />
 
 #Mac pb <br />
 CorruptedCacheException: Corrupted IndexBlock 298298 found in cache '/Users/macuser/.gradle/caches/journal-1/file-access.bin'
