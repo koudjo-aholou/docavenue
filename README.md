@@ -7,7 +7,7 @@ React native 0.60.4
 
 Clone : <br />
 git clone https://github.com/koudjo-aholou/docavenue.git
-
+cd docavenue
 npm install
 
 React Native >= 0.60.0 autoLinking
