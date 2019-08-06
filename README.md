@@ -12,7 +12,7 @@ npm install
 React Native >= 0.60.0 autoLinking
 React Native =< 0.60.0 No autoLinking or if errors checks : 
 
-Lottie : https://github.com/react-native-community/lottie-react-native
+Lottie : https://github.com/react-native-community/lottie-react-native <br />
 React Navigation : https://reactnavigation.org/docs/en/getting-started.html
 
 # Run on Android
