@@ -1,12 +1,13 @@
 #Doc Test Technique docavenue
 
+# Install dependencies in the terminal <br />
+
 ### Version
 React native 0.60.4
 
 Clone : <br />
 git clone https://github.com/koudjo-aholou/docavenue.git
 
-# Install dependencies in the terminal <br />
 npm install
 
 React Native >= 0.60.0 autoLinking
